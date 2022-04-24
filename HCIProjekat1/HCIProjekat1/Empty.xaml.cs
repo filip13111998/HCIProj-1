@@ -20,18 +20,10 @@ namespace HCIProjekat1
     /// </summary>
     public partial class Empty : Page
     {
-        //BitmapImage myBitMapImage { get; set; } = new BitmapImage();
         public Empty()
         {
             
-            //myBitMapImage.BeginInit();
-            //myBitMapImage.UriSource = new Uri("pack://application:,,,/assets/search1.png");
-            //myBitMapImage.EndInit();
-            //myBitMapImage.Freeze();
-
-            //searchImg.Source = myBitMapImage;
-            //this.DataContext = this;
-            InitializeComponent();
+           InitializeComponent();
         }
     }
 }

@@ -22,12 +22,11 @@ namespace HCIProjekat1.util
             Console.WriteLine("*******************VALUTE*******************");
 
 
-
-            using (var reader = new StreamReader(@"C:\Users\vaske\Desktop\Currency\Currency\valute_csv\physical_currency_list.csv"))
+        //C: \Users\vaske\Desktop\HCI - vezbe\HCI1\HCIProj1\HCIProjekat1\HCIProjekat1\valute_csv\digital_currency_list.csv
+            using (var reader = new StreamReader(@"C:\Users\vaske\Desktop\HCI-vezbe\HCI1\HCIProj1\HCIProjekat1\HCIProjekat1\valute_csv\physical_currency_list.csv"))
             {
 
-                //List<string> listB = new List<string>();
-                while (!reader.EndOfStream)
+                 while (!reader.EndOfStream)
                 {
                     var line = reader.ReadLine();
                     var values = line.Split(',');
@@ -38,7 +37,7 @@ namespace HCIProjekat1.util
 
             }
 
-            using (var reader = new StreamReader(@"C:\Users\vaske\Desktop\Currency\Currency\valute_csv\digital_currency_list.csv"))
+            using (var reader = new StreamReader(@"C:\Users\vaske\Desktop\HCI-vezbe\HCI1\HCIProj1\HCIProjekat1\HCIProjekat1\valute_csv\digital_currency_list.csv"))
             {
 
 
@@ -52,9 +51,7 @@ namespace HCIProjekat1.util
                 }
 
             }
-            //this.valute.ForEach(e => Console.WriteLine(e));
-            //Console.WriteLine("Velicina liste je::::: " + valute.Count);
-
+      
         }
 
         public PD_Currency isValuteExist(String val)

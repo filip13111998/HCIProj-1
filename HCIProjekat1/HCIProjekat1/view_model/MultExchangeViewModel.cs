@@ -78,7 +78,6 @@ namespace HCIProjekat1.view_model
             string json_data;
             if (!Is_Transaction_Exist(from_trans, to_trans))
             {
-                //Console.WriteLine("USO");
                 if (Type.Equals("Daily"))
                 {
                     PD_Currency pd1 = Cs.isValuteExist(from_trans);
@@ -142,11 +141,14 @@ namespace HCIProjekat1.view_model
                         //    return false;
                         //}
                         Add_Item_To_Stackpanel(pd1.Currency_Code + "_" + pd2.Currency_Code);
+
                         Console.WriteLine(this.Met.ExcTrans.Count);
+
                         this.Dg.Update_Data();
+
                         this.Dg.LoadBarChartData();
-                        Console.WriteLine("DIAGRAM UPDATE");
-                        return true;
+
+                       return true;
                     }
 
 
@@ -156,7 +158,7 @@ namespace HCIProjekat1.view_model
 
 
             }
-            //Console.WriteLine("STIGO OVDE");
+           
             return false;
         }
 
@@ -170,7 +172,7 @@ namespace HCIProjekat1.view_model
 
         public ExchangeTransaction Get_Transaction(string from_trans, string to_trans)
         {
-            //Console.WriteLine("Rez" + this.Met.ExcTrans.Find(e => e.From.Equals(from_trans) && e.To.Equals(to_trans)).lTranItm.Count);
+   
             return this.Met.ExcTrans.Find(e => e.From.Equals(from_trans) && e.To.Equals(to_trans));
         }
         public Boolean Is_Transaction_Exist(string from_trans, string to_trans)
@@ -228,20 +230,19 @@ namespace HCIProjekat1.view_model
 
 
             btn_x.Click += this.Mw.Button_Delete;
+
             btn_val.Click += this.Dg.New_Window;
-            //tb.Text = pdc.ToString()+"ha";
-            //tb.Name = "tb_" + pdc;
-            //Console.WriteLine(tb.Text);
+     
             sp.Children.Add(btn_x);
+
             sp.Children.Add(btn_val);
             
 
 
             this.Dg.root_control.Children.Add(sp);
-            //this.Dg.scroll_valute.HorizontalScrollBarVisibility = ScrollBarVisibility.Auto;
+   
         }
-        //this.mw.scroll_valute.Height = 100;
-
+   
 
         public void Update_Met()
         {

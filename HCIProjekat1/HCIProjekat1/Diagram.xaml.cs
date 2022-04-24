@@ -63,25 +63,29 @@ namespace HCIProjekat1
         public void LoadBarChartData()
         {
             
-            Console.WriteLine("DATA IS " + data.Count);
-            //Console.WriteLine("SERIES IS " + this.mcChart.Series.Count);
-            //BarSeries barSeries = mcChart.Series.Clear();
-            //Series s = barSeries;
-            //(BarSeries)mcChart.Series.Clear();
-            //(BarSeries)mcChart.Series items = (BarSeries)mcChart.Series.Clear();
+            
             this.Remove_Bar_Chart_Series(data.Count);
             for (int i = 0; i < data.Count; i++)
             {
-                
+
+                if (data.ElementAt(i).Count <5)
+                {
+                    this.Remove_Bar_Chart_Series(data.Count);
+                    return;
+                }
                 ((BarSeries)mcChart.Series[i]).ItemsSource =
                 new KeyValuePair<string, double>[]{
-                new KeyValuePair<string, double>(dates.ElementAt(dates.Count-1), data.ElementAt(i).ElementAt(data.ElementAt(i).Count - 1)),
-                new KeyValuePair<string, double>(dates.ElementAt(dates.Count-2), data.ElementAt(i).ElementAt(data.ElementAt(i).Count - 2)),
-                new KeyValuePair<string, double>(dates.ElementAt(dates.Count-3), data.ElementAt(i).ElementAt(data.ElementAt(i).Count - 3)),
-                new KeyValuePair<string, double>(dates.ElementAt(dates.Count-4), data.ElementAt(i).ElementAt(data.ElementAt(i).Count - 4)),
-                new KeyValuePair<string, double>(dates.ElementAt(dates.Count-5), data.ElementAt(i).ElementAt(data.ElementAt(i).Count - 5))};
-                
-                
+                //new KeyValuePair<string, double>(dates.ElementAt(dates.Count-1), data.ElementAt(i).ElementAt(data.ElementAt(i).Count - 1)),
+                //new KeyValuePair<string, double>(dates.ElementAt(dates.Count-2), data.ElementAt(i).ElementAt(data.ElementAt(i).Count - 2)),
+                //new KeyValuePair<string, double>(dates.ElementAt(dates.Count-3), data.ElementAt(i).ElementAt(data.ElementAt(i).Count - 3)),
+                //new KeyValuePair<string, double>(dates.ElementAt(dates.Count-4), data.ElementAt(i).ElementAt(data.ElementAt(i).Count - 4)),
+                //new KeyValuePair<string, double>(dates.ElementAt(dates.Count-5), data.ElementAt(i).ElementAt(data.ElementAt(i).Count - 5))};
+                new KeyValuePair<string, double>(dates.ElementAt(0), data.ElementAt(i).ElementAt(0)),
+                new KeyValuePair<string, double>(dates.ElementAt(1), data.ElementAt(i).ElementAt(1)),
+                new KeyValuePair<string, double>(dates.ElementAt(2), data.ElementAt(i).ElementAt(2)),
+                new KeyValuePair<string, double>(dates.ElementAt(3), data.ElementAt(i).ElementAt(3)),
+                new KeyValuePair<string, double>(dates.ElementAt(4), data.ElementAt(i).ElementAt(4))};
+
             }
             if (this.Brojac > data.Count)
             {
@@ -95,7 +99,6 @@ namespace HCIProjekat1
 
         public void Remove_Bar_Chart_Series(int index)
         {
-            //((BarSeries)mcChart.Series[index]).ItemsSource = null;
             
             for (int i = index; i < this.Brojac; i++)
             {
@@ -171,9 +174,9 @@ namespace HCIProjekat1
         public void Update_Data()
         {
             this.data = new List<List<double>>();
+
             this.sc = new SeriesCollection();
-            //Console.WriteLine("SC " + this.sc.Count);
-            //Console.WriteLine("MET " + this.Mewm2.Met.ExcTrans.Count);
+        
             if(this.Mewm2.Met.ExcTrans.Count==0)
             {
                 return;
@@ -182,8 +185,7 @@ namespace HCIProjekat1
             
             if (this.Mewm2.Diagram_Type.Equals("Open"))
             {
-                Console.WriteLine("OPEN");
-                this.Mewm2.Met.ExcTrans.ForEach(e => this.data.Add(e.lTranItm.Select(el => Convert.ToDouble(el.Open)).ToList()));
+               this.Mewm2.Met.ExcTrans.ForEach(e => this.data.Add(e.lTranItm.Select(el => Convert.ToDouble(el.Open)).ToList()));
                    
                 this.data.ForEach(e =>
                 {
@@ -213,7 +215,7 @@ namespace HCIProjekat1
             else if (this.Mewm2.Diagram_Type.Equals("Low"))
             {
                 this.Mewm2.Met.ExcTrans.ForEach(e => this.data.Add(e.lTranItm.Select(el => Convert.ToDouble(el.Low)).ToList()));
-                Console.WriteLine("LOW");
+              
                 this.data.ForEach(e =>
                 {
                     var tem = new ChartValues<double>();
@@ -265,7 +267,6 @@ namespace HCIProjekat1
             else
             {
                 
-                //Console.WriteLine(this.Mewm2.Met.ExcTrans.Count + " exc");
                 this.Mewm2.Met.ExcTrans.ForEach(e => this.data.Add(e.lTranItm.Select(el => Convert.ToDouble(el.Close)).ToList()));
                 
                 this.data.ForEach(e =>
@@ -274,14 +275,12 @@ namespace HCIProjekat1
                    
                     foreach (var n in e)
                     {
-                        //Console.WriteLine("STOO PUTA");
+               
                         tem.Add(n);
                         
                     }
                     
-                    //Console.WriteLine("Broj " + tem.Count);
-                    //Console.WriteLine("USO OVDe");
-                    this.sc.Add(new LiveCharts.Wpf.LineSeries()
+                     this.sc.Add(new LiveCharts.Wpf.LineSeries()
                     {
                         Title = "Close",
                         Values = tem

@@ -8,9 +8,6 @@
         Icon="/assets/tabel.png"
         Title="TableWindow" Height="800" Width="700">
     <Grid>
-        <!--<Label Content="{Binding From}"></Label>-->
-        <!--<Label Content="{Binding lTranItm.Count}"></Label>-->
-        <!--<Button Height="20" Click="Button_Click">tekst</Button>-->
         <DataGrid LoadingRow="DataGrid_LoadingRow" Background="#fffddd"  AutoGenerateColumns="False" ItemsSource="{Binding lTranItm}" CanUserAddRows="False">
             <DataGrid.Resources>
                 <Style TargetType="DataGridCell">
@@ -35,33 +32,10 @@
                 <DataGridTextColumn Header="Low" Binding="{Binding Low}"  Width="0.2*"/>
                 <DataGridTextColumn Header="Close" Binding="{Binding Close}"  Width="0.2*"/>
 
-                <!--<DataGridTemplateColumn Header="Birthday">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <DatePicker SelectedDate="{Binding Birthday}" BorderThickness="0" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>-->
-
+             
             </DataGrid.Columns>
         </DataGrid>
 
-        <!--<DataGrid x:Name="dg" ItemsSource="{Binding listTransItem}" AutoGenerateColumns="False">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Date" Binding="{Binding Key}"/>
-                <DataGridTextColumn Header="Open" Binding="{Binding Path=lTranItm.Open}" />
-                <DataGridTextColumn Header="High" Binding="{Binding Value[1]}" />
-                <DataGridTextColumn Header="Low" Binding="{Binding Value[2]}" />
-                <DataGridTextColumn Header="Close" Binding="{Binding Value[3]}" />
-
-                -->
-        <!--<DataGridTextColumn Header="Name" Binding="{Binding Value[0]}"/>
-                <DataGridTextColumn Header="Name" Binding="{Binding Value[1]}"/>
-                <DataGridTextColumn Header="Name" Binding="{Binding Value[2]}"/>-->
-        <!--
-            
-            </DataGrid.Columns>
-        </DataGrid>-->
-
+      
     </Grid>
 </Window>

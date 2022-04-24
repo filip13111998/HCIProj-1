@@ -54,8 +54,7 @@ namespace HCIProjekat1.mapper
 
             //deserialize array of transactions
             JToken fxToken = jObject[$"Time Series FX ({type})"];
-            //Console.WriteLine("TOKENNNN " + fxToken.ToString());
-
+    
             Dictionary<string, TransactionItem> values = JsonConvert.DeserializeObject<Dictionary<string, TransactionItem>>(fxToken.ToString());
             et.listTransItem = values;
 

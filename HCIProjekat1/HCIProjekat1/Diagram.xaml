@@ -41,8 +41,7 @@
         </Style>
 
         <Style TargetType="{x:Type Button}" x:Key="TableButton">
-            <!--<Setter Property="Background" Value="#ffffff" />-->
-            <Setter Property="Background" Value="#1a9fad" />
+              <Setter Property="Background" Value="#1a9fad" />
             <Setter Property="Foreground" Value="#fffddd" />
 
             <Setter Property="Template">
@@ -67,7 +66,6 @@
         
         
         
-        <!--<Button x:Name="Tabe_View" Width="200" Click="New_Window">Table View</Button>-->
         <Grid Margin="0 50 0 0">
             
             <Grid.ColumnDefinitions>
@@ -83,25 +81,18 @@
 
                 <RowDefinition Height= "30" />
                 <RowDefinition Height = "30" />
-                <!--<RowDefinition Height = "70" />-->
-                <!--<RowDefinition Height = "20" />-->
-            </Grid.RowDefinitions>
+           </Grid.RowDefinitions>
 
 
-            <Button Style="{StaticResource ValuteButton}" x:Name="btn1" Click="Time_Click" Grid.Row="0" Grid.Column="1">1min</Button>
-            <Button Style="{StaticResource ValuteButton}" x:Name="btn5" Click="Time_Click" Grid.Row="0" Grid.Column="2">5min</Button>
-            <Button Style="{StaticResource ValuteButton}" x:Name="btn15" Click="Time_Click" Grid.Row="0" Grid.Column="3">15min</Button>
-            <Button Style="{StaticResource ValuteButton}" x:Name="btn30" Click="Time_Click" Grid.Row="0" Grid.Column="4">30min</Button>
-            <Button Style="{StaticResource ValuteButton}" x:Name="btn1h" Click="Time_Click" Grid.Row="1" Grid.Column="1">1Hour</Button>
-            <Button Style="{StaticResource ValuteButton}" x:Name="btn1d" Click="Time_Click" Grid.Row="1" Grid.Column="2">Day</Button>
-            <Button Style="{StaticResource ValuteButton}" x:Name="btn1w" Click="Time_Click" Grid.Row="1" Grid.Column="3">1Week</Button>
-            <Button Style="{StaticResource ValuteButton}" x:Name="btn1m" Click="Time_Click" Grid.Row="1" Grid.Column="4">1Month</Button>
-            <!--<ScrollViewer  Grid.RowSpan="4" Grid.Column="4" VerticalScrollBarVisibility="Auto"  HorizontalScrollBarVisibility="Auto"  x:Name="scroll_valute">
-                <StackPanel Orientation = "Vertical"  x:Name="root_control">
-
-                </StackPanel>
-            </ScrollViewer>-->
-        </Grid>
+            <Button Style="{StaticResource ValuteButton}" x:Name="btn1" Click="Time_Click" Grid.Row="0" Grid.Column="1">1 min</Button>
+            <Button Style="{StaticResource ValuteButton}" x:Name="btn5" Click="Time_Click" Grid.Row="0" Grid.Column="2">5 min</Button>
+            <Button Style="{StaticResource ValuteButton}" x:Name="btn15" Click="Time_Click" Grid.Row="0" Grid.Column="3">15 min</Button>
+            <Button Style="{StaticResource ValuteButton}" x:Name="btn30" Click="Time_Click" Grid.Row="0" Grid.Column="4">30 min</Button>
+            <Button Style="{StaticResource ValuteButton}" x:Name="btn1h" Click="Time_Click" Grid.Row="1" Grid.Column="1">1 Hour</Button>
+            <Button Style="{StaticResource ValuteButton}" x:Name="btn1d" Click="Time_Click" Grid.Row="1" Grid.Column="2">1 Day</Button>
+            <Button Style="{StaticResource ValuteButton}" x:Name="btn1w" Click="Time_Click" Grid.Row="1" Grid.Column="3">1 Week</Button>
+            <Button Style="{StaticResource ValuteButton}" x:Name="btn1m" Click="Time_Click" Grid.Row="1" Grid.Column="4">1 Month</Button>
+       </Grid>
 
 
 
@@ -121,13 +112,7 @@
                 <RowDefinition Height="2*" />
                 
             </Grid.RowDefinitions>
-
-            <!--<Wpf:CartesianChart Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,5,-139.6" >
-
-
-            </Wpf:CartesianChart>-->
-            <!--Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="2"-->
-           
+     
                 <DVC:Chart  Grid.Row="1" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="2"
                  Name="mcChart"
                Width="400" Height="250"
@@ -159,28 +144,7 @@
                
             </DVC:Chart>
 
-            <!--<DVC:Chart  Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="2"  Canvas.Top="80" Canvas.Left="10" Name="mcChart"  
-   Width="300" Height="250"  
-   Background="LightSteelBlue">
-                <DVC:Chart.Series>
-                    <DVC:PieSeries Title="Fruits"  
-            ItemsSource="{StaticResource FruitCollection}"  
-            IndependentValueBinding="{Binding Path=Name}"  
-            DependentValueBinding="{Binding Path=Share}">
-                    </DVC:PieSeries>
-                </DVC:Chart.Series>
-            </DVC:Chart>-->
-
-            <!--<Wpf:CartesianChart Series="{Binding sc}" Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,0,-174.4" >
-                <Wpf:CartesianChart.AxisX>
-                    <Wpf:Axis Title="Salesman" Labels="{Binding dates}"></Wpf:Axis>
-                </Wpf:CartesianChart.AxisX>
-                <Wpf:CartesianChart.AxisY>
-                    <Wpf:Axis Title="Sold Apps" LabelFormatter="{Binding yFormatter}"></Wpf:Axis>
-                </Wpf:CartesianChart.AxisY>
-            </Wpf:CartesianChart>-->
-
-            <ComboBox SelectionChanged="Button_Click" Grid.Row="0" Grid.Column="2"  SelectedIndex="0" >
+         <ComboBox SelectionChanged="Button_Click" Grid.Row="0" Grid.Column="2"  SelectedIndex="0" >
                 <ComboBoxItem >
                     Open
                 </ComboBoxItem>
@@ -225,11 +189,6 @@
                 <TextBlock Margin="0 0 100 0" >Cartesian Chart</TextBlock>
                
             </StackPanel>
-            <!--<Label Grid.Column="0"  Content="Bar Plot"></Label>
-            <Label Grid.Column="2" Content="Cartesian sChart"></Label>-->
         </Grid>
-        <!--<TextBlock x:Name="tb" Text="{Binding prop}"></TextBlock>-->
-        <!--<TextBlock>Diagram</TextBlock>-->
-        <!--ovde idu dva dijagram-->
-    </StackPanel>
+   </StackPanel>
 </Page>

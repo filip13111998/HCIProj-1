@@ -60,23 +60,9 @@
 
         </Grid>
 
-        <!--<Label Content="{Binding Type}"></Label>-->
-        <!--<Label x:Name="PEra" Content="Glu tekst" HorizontalAlignment="Left" Margin="449,246,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
-
-        </Label>-->
-        <!--<Label x:Name="PEra2" Content="Glu tekst" HorizontalAlignment="Left" Margin="449,266,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">-->
-
-        <!--</Label>-->
-        <!--<Button Content="New Window" Click="Button_Click2" FontSize="32" HorizontalAlignment="Left" Margin="536,157,0,0" VerticalAlignment="Top"/>-->
-        <!--<Button Content="Button_Error"  Click="Button_Click_1" Margin="285,39,437,322"/>
-        <Button Content="Button_Empty"  Click="Button_Click_2" Margin="139,38,569,322"/>
-        <Button Content="Button_Display"  Click="Button_Click_3" Width="82" Margin="400,41,318,322"/>-->
         <DockPanel Margin="50 50 50 0" Height="500">
             <Frame x:Name="_NavigationFrame" NavigationUIVisibility="Hidden" />
         </DockPanel>
-
-        <!--<Button Content="btn_add"  Click="Button_Add" Width="82" Margin="25,38,693,325"/>-->
-
 
     </StackPanel>
 </Window>

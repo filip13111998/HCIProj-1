@@ -8,8 +8,6 @@ namespace HCIProjekat1.model
 {
     public class MultipleExchangeTransaction
     {
-        //public TransactionType TransType { get; set; } = TransactionType.MINUTE_5;
-
         public List<ExchangeTransaction> ExcTrans { get; set; }
 
         public MultipleExchangeTransaction()
