@@ -1,0 +1,82 @@
+﻿<Window x:Class="HCIProjekat1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HCIProjekat1" xmlns:fa="http://schemas.fontawesome.io/icons/"
+        mc:Ignorable="d"
+        Title=" Valute Converter" Height="800" Width="1200"
+        Icon="/assets/currency2.png"
+        WindowStartupLocation="CenterScreen">
+
+    
+    <StackPanel>
+        <Grid Margin="50 50 50 0" Height="220" OpacityMask="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width = "*" />
+                <ColumnDefinition Width = "*" />
+                <ColumnDefinition Width = "*" />
+
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height = "*" />
+                <RowDefinition Height = "*" />
+                <RowDefinition Height = "*" />
+            </Grid.RowDefinitions>
+            <Label Margin="0 10" Grid.Row ="0"   FontSize="24" HorizontalContentAlignment="Right" VerticalContentAlignment="Center">From:</Label>
+            <TextBox Margin="0 10" Grid.Row ="0" x:Name="from_tb" FontSize="20"  Grid.Column="1" Text="USD" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+            <Label Margin="0 10" Grid.Row ="1" Grid.Column="0"  FontSize="24" HorizontalContentAlignment="Right" VerticalContentAlignment="Center">To:</Label>
+            <TextBox Margin="0 10" Grid.Row ="1" x:Name="to_tb" FontSize="20" Grid.Column="1" Text="RSD" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+
+            <Button Grid.Row ="2" Grid.Column="1" FontSize="24" Click="Add_New_Valute" HorizontalContentAlignment="Center">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <Image x:Name="searchImg" Source="/assets/currency4.png"  />
+                        <TextBlock Margin="10 20 0 0">Convert</TextBlock>
+                    </StackPanel>
+                </Button.Content>
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="#18cade" />
+                        <Setter Property="Foreground" Value="#fffddd" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border x:Name="Border" Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#1a9fad" TargetName="Border" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+
+            </Button>
+
+        </Grid>
+
+        <!--<Label Content="{Binding Type}"></Label>-->
+        <!--<Label x:Name="PEra" Content="Glu tekst" HorizontalAlignment="Left" Margin="449,246,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+
+        </Label>-->
+        <!--<Label x:Name="PEra2" Content="Glu tekst" HorizontalAlignment="Left" Margin="449,266,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">-->
+
+        <!--</Label>-->
+        <!--<Button Content="New Window" Click="Button_Click2" FontSize="32" HorizontalAlignment="Left" Margin="536,157,0,0" VerticalAlignment="Top"/>-->
+        <!--<Button Content="Button_Error"  Click="Button_Click_1" Margin="285,39,437,322"/>
+        <Button Content="Button_Empty"  Click="Button_Click_2" Margin="139,38,569,322"/>
+        <Button Content="Button_Display"  Click="Button_Click_3" Width="82" Margin="400,41,318,322"/>-->
+        <DockPanel Margin="50 50 50 0" Height="500">
+            <Frame x:Name="_NavigationFrame" NavigationUIVisibility="Hidden" />
+        </DockPanel>
+
+        <!--<Button Content="btn_add"  Click="Button_Add" Width="82" Margin="25,38,693,325"/>-->
+
+
+    </StackPanel>
+</Window>
