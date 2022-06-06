@@ -1,0 +1,252 @@
+﻿<Page x:Class="Serbia_Train.pages.TrainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Serbia_Train.pages"
+      mc:Ignorable="d"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+     
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="TrainPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Margin="0 0 0 0">
+            <Frame x:Name="_MenuNavigationBarFrame" NavigationUIVisibility="Hidden" />
+
+        </Grid>
+
+
+        <Grid Grid.Row="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="5.2*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0" >
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="70"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <StackPanel Background="#a8d0e6" Grid.Row="0" Height="70" Orientation="Horizontal">
+                            <TextBox Margin="10 0 0 0" Width="130" 
+                                     materialDesign:TextFieldAssist.UnderlineBrush="#a8d0e6"  
+                                     Opacity="0.7" HorizontalContentAlignment="Center" 
+                                     Text="Add Train" x:Name="Add_Train_Filed" 
+                                     Height="40" FontSize="20" ></TextBox>
+
+                            <Button Click="Add_Train_Click" BorderThickness="0 0 0 0" Margin="16 0 0 0" Background="Transparent">
+                                <Image Source="/assets/add.png" Width="30" Height="20"/>
+                            </Button>
+                        </StackPanel>
+
+                        <!--LoadingRow="DataGrid_LoadingRow"-->
+
+                        <DataGrid Grid.Row="1"  CanUserDeleteRows="True" Foreground="White" Background="#a8d0e6" x:Name="Trains_Left_Menu" ItemsSource ="{Binding}"  AutoGenerateColumns="False"  CanUserAddRows="False">
+
+
+
+                            <DataGrid.Resources>
+
+                                <Style TargetType="{x:Type DataGridCell}">
+                                    <Setter Property="BorderThickness" Value="0"/>
+                                    <!-- Update from comments.
+                 Remove the focus indication for the selected cell -->
+                                    <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+
+                                    <Style.Resources>
+
+                                        <Style TargetType="ContentPresenter">
+                                            <Setter Property="HorizontalAlignment" Value="Center" />
+
+                                        </Style>
+                                    </Style.Resources>
+                                    <Style.Triggers>
+                                        <Trigger Property="DataGridCell.IsSelected" Value="True">
+                                            <Setter Property="Background" Value="#CCDAFF" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                    <Setter Property="Background" Value="#a8d0e6" />
+                                    <Setter Property="Foreground" Value="Black" />
+                                    <Setter Property="Height" Value="40" />
+                                </Style>
+
+                            </DataGrid.Resources>
+
+                            <DataGrid.ItemContainerStyle>
+
+
+
+                                <Style TargetType="DataGridRow">
+                                    <Setter Property="Background" Value="#a8d0e6" />
+                                    <EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick"/>
+
+                                    <Style.Triggers>
+
+
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter Property="BorderBrush" Value="{x:Null}"/>
+                                            <Setter Property="Background" Value="#CCDAFF"/>
+                                        </Trigger>
+
+
+
+
+                                        <!--<Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#239ccc"/>
+                                    </Trigger>-->
+
+
+
+                                    </Style.Triggers>
+                                </Style>
+
+
+                            </DataGrid.ItemContainerStyle>
+
+
+
+                            <DataGrid.Columns>
+
+
+                                <DataGridTemplateColumn Width="0.5*"  Header="All Trains List">
+
+                                    <DataGridTemplateColumn.CellTemplate>
+
+                                        <DataTemplate>
+
+                                            <StackPanel Orientation="Horizontal">
+                                                <Image  Margin="20 0 0 0" Source="/assets/train2.png" Height="30"/>
+                                                <TextBlock Margin="20 0 0 0" Text="{Binding Name}"></TextBlock>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+
+                                </DataGridTemplateColumn>
+
+
+
+                                <DataGridTemplateColumn Width="0.5*" Header="Delete">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button BorderThickness="0 0 0 0"  Background="Transparent"
+                                            Command="Delete">
+                                                <Image Source="/assets/del1.png" Width="20"></Image>
+                                            </Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+
+
+                            </DataGrid.Columns>
+
+
+                        </DataGrid>
+
+                    </Grid>
+                    
+                   
+                </Grid>
+
+                <Grid Grid.Column="1">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="2.5*"></RowDefinition>
+                            <RowDefinition Height="1.5*"></RowDefinition>
+                            <RowDefinition Height="3*"></RowDefinition>
+                            <RowDefinition Height="5*"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+
+                        <StackPanel Grid.Row="1" Orientation="Vertical">
+                            <!--<TextBlock FontSize="32" Margin="430 0 0 0" Text="Train Name"></TextBlock>-->
+                            <Border  BorderThickness="1,1,1,0"
+        
+                                CornerRadius="15,15,10,10">
+                                <Border 
+                                    Background="#a8d0e6"
+                                    Height="50"
+                                    CornerRadius="15"
+                                    Width="200"    
+                                    HorizontalAlignment="Center">       
+                                    <Label Foreground="White"  HorizontalContentAlignment="Center" FontSize="32"  Content="Train Name"></Label>
+                                </Border>
+                            </Border>
+
+                            <Border Margin="0 20 0 0" BorderThickness="1,1,1,0"
+        
+                                CornerRadius="15,15,10,10">
+                                <Border 
+
+                                    Height="60"
+                                    CornerRadius="15"
+                                    Width="200"    
+                                    HorizontalAlignment="Center">
+                                    <Label Foreground="#a8d0e6" x:Name="Train_Name" HorizontalContentAlignment="Center" FontSize="32"  Content=""></Label>
+                                </Border>
+                            </Border>
+
+                            <!--<TextBlock FontSize="32" Margin="600 20 0 0" x:Name="Train_Name" ></TextBlock>-->
+                        </StackPanel>
+
+                        <ScrollViewer Grid.Row="3" HorizontalAlignment="Left" HorizontalContentAlignment="Center" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                            <StackPanel Margin="400 0 0 0" Grid.Row="3" Orientation="Horizontal" x:Name="Train_Composition">
+
+                            </StackPanel>
+                        </ScrollViewer>
+
+                        <Grid Grid.Row="4">
+                            <ComboBox x:Name="Combo" Margin="0 0 0 100" Width="150" Height="40">
+                                <ComboBoxItem IsSelected="True">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image  Margin="20 0 0 0" Source="/assets/wagon1.png" Height="30"/>
+                                        <TextBlock  Margin="20 10 0 0" Text="MALI"></TextBlock>
+                                    </StackPanel>
+
+
+                                </ComboBoxItem>
+                                <ComboBoxItem >
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image  Margin="20 0 0 0" Source="/assets/wagon2.png" Height="30"/>
+                                        <TextBlock   Margin="20 10 0 0" Text="SREDNJI"></TextBlock>
+                                    </StackPanel>
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image  Margin="20 0 0 0" Source="/assets/wagon3.png" Height="30"/>
+                                        <TextBlock  Margin="20 10 0 0" Text="VELIKI"></TextBlock>
+                                    </StackPanel>
+                                </ComboBoxItem>
+                            </ComboBox>
+
+                            <TextBox Margin="0 80 0 50" Width="250" materialDesign:TextFieldAssist.UnderlineBrush="#a8d0e6"  Opacity="0.7" HorizontalContentAlignment="Center" Text="Enter Wagon Number" x:Name="Wagon_Order_Filed" Height="40" FontSize="20" ></TextBox>
+
+                            <Button x:Name="Add_Wagon" Width="250" BorderThickness="0 0 0 0"  Background="#a8d0e6" Click="Add_Wagon_Click" Margin="70 120 70 0" Content="Add Wagon"></Button>
+
+
+                        </Grid>
+
+
+                    </Grid>
+                </Grid>
+
+                
+
+            </Grid>
+            
+        </Grid>
+
+    </Grid>
+</Page>

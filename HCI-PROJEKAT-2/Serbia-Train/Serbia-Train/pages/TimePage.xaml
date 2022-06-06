@@ -1,0 +1,238 @@
+﻿<Page x:Class="Serbia_Train.pages.TimePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Serbia_Train.pages"
+      mc:Ignorable="d" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+     
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="TimePage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <Grid Grid.Row="0" Margin="0 0 0 0">
+            <Frame x:Name="_MenuNavigationBarFrame" NavigationUIVisibility="Hidden" />
+
+        </Grid>
+
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="5.2*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+
+            <Grid Grid.Column="0" >
+
+                <Grid>
+                    
+                    
+
+                    <!--LoadingRow="DataGrid_LoadingRow"-->
+
+                    <DataGrid  ColumnWidth="*"  CanUserDeleteRows="False" Foreground="White" Background="#a8d0e6" x:Name="Trains_Left_Menu" ItemsSource ="{Binding}"  AutoGenerateColumns="False"  CanUserAddRows="False">
+
+
+
+                        <DataGrid.Resources>
+                            <Style TargetType="{x:Type DataGridCell}">
+                                <Setter Property="BorderThickness" Value="0"/>
+                               <!-- Update from comments.
+                 Remove the focus indication for the selected cell -->
+                                <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+
+                                <Style.Resources>
+
+                                    <Style TargetType="ContentPresenter">
+                                        <Setter Property="HorizontalAlignment" Value="Center" />
+
+                                    </Style>
+                                </Style.Resources>
+                                <Style.Triggers>
+                                    <Trigger Property="DataGridCell.IsSelected" Value="True">
+                                        <Setter Property="Background" Value="#CCDAFF" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                <Setter Property="Background" Value="#a8d0e6" />
+                                <Setter Property="Foreground" Value="Black" />
+                                <Setter Property="Height" Value="60" />
+                                
+                                
+                            </Style>
+
+                          
+                        </DataGrid.Resources>
+
+                
+
+                        <DataGrid.ItemContainerStyle>
+
+                            
+
+                            <Style TargetType="DataGridRow">
+                                <Setter Property="Background" Value="#a8d0e6" />
+                                <EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick"/>
+
+                                <Style.Triggers>
+
+
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="BorderBrush" Value="{x:Null}"/>
+                                        <Setter Property="Background" Value="#CCDAFF"/>
+                                    </Trigger>
+
+
+
+
+                                    <!--<Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#239ccc"/>
+                                    </Trigger>-->
+
+
+
+                                </Style.Triggers>
+                            </Style>
+
+
+                        </DataGrid.ItemContainerStyle>
+
+
+
+                        <DataGrid.Columns>
+
+
+                            <DataGridTemplateColumn Width="*" Header="All Trains List">
+
+                                <DataGridTemplateColumn.CellTemplate>
+
+                                    <DataTemplate>
+
+                                        <StackPanel  Orientation="Horizontal">
+                                            <Image Source="/assets/train2.png" Height="30"/>
+                                            <TextBlock Margin="20 0 0 0" Text="{Binding Name}"></TextBlock>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+
+                            </DataGridTemplateColumn>
+
+
+                        </DataGrid.Columns>
+
+
+                    </DataGrid>
+
+                </Grid>
+
+
+            </Grid>
+
+
+            <Grid x:Name="Content_Part" Visibility="Hidden" Grid.Column="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        
+                        <RowDefinition Height="5.5*"></RowDefinition>
+                        <RowDefinition Height="0.5*"></RowDefinition>
+                        
+                        <RowDefinition Height="2*"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    
+
+                    <Grid Grid.Row="0" Margin="0 50 0 0">
+
+                        <StackPanel Orientation="Vertical" >
+
+                            <Grid  Margin="0 0 0 50">
+                                <Border  BorderThickness="1,1,1,0"
+        
+                                CornerRadius="15,15,10,10">
+                                    <Border 
+                                    Background="#a8d0e6"
+                                    Height="50"
+                                    CornerRadius="15"
+                                    Width="300"    
+                                    HorizontalAlignment="Center">
+                                        <Label Foreground="White"  HorizontalContentAlignment="Center" FontSize="32"  Content="Timetable Form"></Label>
+                                    </Border>
+                                </Border>
+                            </Grid>
+                            
+                            
+                            <StackPanel Orientation="Horizontal" Margin="0 0 0 50">
+                                <TextBox  Margin="350 0 0 0"  Width="250" materialDesign:TextFieldAssist.UnderlineBrush="#a8d0e6"  Opacity="0.7" HorizontalContentAlignment="Center" Text="Start Time" x:Name="Start_Filed" Height="40" FontSize="20" ></TextBox>
+                                <TextBox Margin="50 0 0 0" Width="250" materialDesign:TextFieldAssist.UnderlineBrush="#a8d0e6"  Opacity="0.7" HorizontalContentAlignment="Center" Text="End Time" x:Name="End_Filed" Height="40" FontSize="20" ></TextBox>
+
+
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal"  Margin="0 0 0 50">
+                                <TextBox Margin="350 0 0 0" Width="250" materialDesign:TextFieldAssist.UnderlineBrush="#a8d0e6"  Opacity="0.7" HorizontalContentAlignment="Center" Text="Comeback Start Time" x:Name="Comeback_Start_Filed" Height="40" FontSize="20" ></TextBox>
+                                <TextBox Margin="50 0 0 0" Width="250" materialDesign:TextFieldAssist.UnderlineBrush="#a8d0e6"  Opacity="0.7" HorizontalContentAlignment="Center" Text="Comeback End Time" x:Name="Comeback_End_Filed" Height="40" FontSize="20" ></TextBox>
+
+                            </StackPanel>
+
+                            <ComboBox x:Name="Combo"  Width="250"></ComboBox>
+                            
+                            <Button  Margin="0 50 0 0" x:Name="Add_Timetable" Width="250" BorderThickness="0 0 0 0"  Background="#a8d0e6" Click="Add_Timetable_Click" Content="Add Timetable"></Button>
+
+                        </StackPanel>
+
+                    </Grid>
+
+
+                    <Grid Grid.Row="2">
+                        <DataGrid ColumnWidth="*" AutoGenerateColumns="False"
+                                  ItemsSource="{Binding}" x:Name="Timetable_Grid" 
+                                  Margin="250 0 250 50" CanUserDeleteRows="True" CanUserAddRows="False">
+
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Start" Binding="{Binding Start}" />
+                                <DataGridTextColumn Header="End" Binding="{Binding End}"   />
+                                <DataGridTextColumn Header="Comeback Start" Binding="{Binding ComebackStart}" />
+                                <DataGridTextColumn Header="Comeback End" Binding="{Binding ComebackEnd}"  />
+                                <DataGridTextColumn Header="Type Timetable" Binding="{Binding TypeTimetable}" />
+
+                                <DataGridTemplateColumn Header="Delete">
+                                    <!--<DataGridTemplateColumn.HeaderStyle>
+                                        <Style TargetType="DataGridColumnHeader">
+                                            <Setter Property="Background" Value="White"/>
+                                            <Setter Property="Margin" Value="30 0 0 0"/>
+                                        </Style>
+                                    </DataGridTemplateColumn.HeaderStyle>-->
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button  BorderThickness="0 0 0 0"  Background="Transparent"
+                                             Click="Delete_Click">
+                                                <Image Source="/assets/del1.png" ></Image>
+                                            </Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+
+                            </DataGrid.Columns>
+                            
+                        </DataGrid>
+                    </Grid>
+                    
+                </Grid>
+            </Grid>
+
+        </Grid>
+
+        
+        
+
+    </Grid>
+</Page>

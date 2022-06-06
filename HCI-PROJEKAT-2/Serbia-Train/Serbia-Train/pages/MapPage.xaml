@@ -1,0 +1,231 @@
+﻿<Page x:Class="Serbia_Train.pages.MapPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Serbia_Train.pages"
+      mc:Ignorable="d" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+     xmlns:gmaps="clr-namespace:GMap.NET.WindowsPresentation;assembly=GMap.NET.WindowsPresentation"
+        
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MapPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.3*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="4*"></RowDefinition>
+
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="1">
+            <Border  BorderThickness="1,1,1,0"
+        
+                CornerRadius="15,15,10,10">
+                <Border 
+                    Background="#a8d0e6"
+                    Height="50"
+                    CornerRadius="15"
+                    Width="300"    
+                    HorizontalAlignment="Center">
+                    <Label Foreground="White"  HorizontalContentAlignment="Center" FontSize="30"  Content="Line Name"></Label>
+                </Border>
+            </Border>
+
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Border Margin="0 20 0 0" BorderThickness="1,1,1,0"
+        
+                CornerRadius="15,15,10,10">
+                <Border 
+
+                    Height="60"
+                    CornerRadius="15"
+                    Width="200"    
+                    HorizontalAlignment="Center">
+                    <Label x:Name="Lab_Name"
+                        Foreground="#a8d0e6" HorizontalContentAlignment="Center" 
+                           FontSize="32"  Content=""></Label>
+                </Border>
+            </Border>
+        </Grid>
+
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <TextBox Margin="0 0 10 0" Grid.Column="1" 
+                     materialDesign:TextFieldAssist.UnderlineBrush="#a8d0e6"  
+                     Opacity="0.7" 
+                     HorizontalContentAlignment="Center" 
+                     Text="Enter Name" x:Name="Station_Name_Filed" 
+                     Height="40" FontSize="20" >
+                
+            </TextBox>
+
+            <TextBox Grid.Column="2" 
+                     materialDesign:TextFieldAssist.UnderlineBrush="#a8d0e6"  
+                     Opacity="0.7" 
+                     HorizontalContentAlignment="Center" 
+                     Text="Enter Longitude" x:Name="Longitude_Name_Filed" 
+                     Height="40" FontSize="20" >
+
+            </TextBox>
+
+            <TextBox Margin="10 0 0 0" Grid.Column="3" 
+                     materialDesign:TextFieldAssist.UnderlineBrush="#a8d0e6"  
+                     Opacity="0.7" 
+                     HorizontalContentAlignment="Center" 
+                     Text="Enter Latitude" x:Name="Latitude_Name_Filed" 
+                     Height="40" FontSize="20" >
+
+            </TextBox>
+
+
+        </Grid>
+        <Grid Grid.Row="4">
+            <Button  BorderThickness="0 0 0 0"  
+                     Background="#a8d0e6" 
+                     Click="Add_Station" 
+                     Margin="500 0 500 0"
+                     
+                     Content="Sign In">
+                
+            </Button>
+
+        </Grid>
+
+        <Grid Grid.Row="6">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="3.5*"></ColumnDefinition>
+
+            </Grid.ColumnDefinitions>
+
+
+
+            <Grid Grid.Column="0">
+               
+
+                <!--LoadingRow="DataGrid_LoadingRow"-->
+
+                <DataGrid BorderThickness="2 0 2 0" BorderBrush="White" CanUserDeleteRows="True" Foreground="White" Background="#a8d0e6" x:Name="Station_Left_Menu" ItemsSource ="{Binding Path=ListaStanica}"  AutoGenerateColumns="False"  CanUserAddRows="False">
+
+
+
+                    <DataGrid.Resources>
+
+                        <Style TargetType="{x:Type DataGridCell}">
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <!-- Update from comments.
+                 Remove the focus indication for the selected cell -->
+                            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+
+                            <Style.Resources>
+
+                                <Style TargetType="ContentPresenter">
+                                    <Setter Property="HorizontalAlignment" Value="Center" />
+
+                                </Style>
+                            </Style.Resources>
+                            <Style.Triggers>
+                                <Trigger Property="DataGridCell.IsSelected" Value="True">
+                                    <Setter Property="Background" Value="#CCDAFF" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            <Setter Property="Background" Value="#a8d0e6" />
+                            <Setter Property="Foreground" Value="Black" />
+                            <Setter Property="Height" Value="40" />
+                        </Style>
+
+                    </DataGrid.Resources>
+
+                    <DataGrid.ItemContainerStyle>
+
+
+
+                        <Style TargetType="DataGridRow">
+                            <Setter Property="Background" Value="#a8d0e6" />
+                            <!--<EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick"/>-->
+
+                            <Style.Triggers>
+
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="BorderBrush" Value="{x:Null}"/>
+                                    <Setter Property="Background" Value="#CCDAFF"/>
+                                </Trigger>
+
+
+                            </Style.Triggers>
+                        </Style>
+
+
+                    </DataGrid.ItemContainerStyle>
+
+
+
+                    <DataGrid.Columns>
+
+
+                        <DataGridTemplateColumn Width="0.5*"  Header="Stations List">
+
+                            <DataGridTemplateColumn.CellTemplate>
+
+                                <DataTemplate>
+
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image  Margin="20 0 0 0" Source="/assets/st4.png" Height="30"/>
+                                        <TextBlock Margin="20 0 0 0" Text="{Binding Name}"></TextBlock>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+
+                        </DataGridTemplateColumn>
+
+
+
+                        <DataGridTemplateColumn Width="0.5*" Header="Delete">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button BorderThickness="0 0 0 0"  Background="Transparent"
+                                            Click="Delete_Station">
+                                        <Image Source="/assets/del1.png" Width="20"></Image>
+                                    </Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+
+                    </DataGrid.Columns>
+
+
+                </DataGrid>
+
+            </Grid>
+
+            <Grid  Grid.Column="1" Width="auto">
+                <ScrollViewer>
+                    <gmaps:GMapControl x:Name="mapView" BorderThickness="2" Loaded="MapView_Loaded" />
+
+                </ScrollViewer>
+                
+            </Grid>
+
+            </Grid>
+
+    </Grid>
+</Page>
