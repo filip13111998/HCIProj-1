@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MaterialDesignThemes.Wpf;
 using Serbia_Train.models;
 
 namespace Serbia_Train.pages
@@ -38,6 +39,27 @@ namespace Serbia_Train.pages
             this.Mw = mw;
 
         }
+
+
+        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            Console.WriteLine("USO");
+            IInputElement focusedControl = FocusManager.GetFocusedElement(Application.Current.Windows[0]);
+            if (focusedControl is DependencyObject)
+            {
+                string str = HelpProvider.GetHelpKey((DependencyObject)focusedControl);
+                Console.WriteLine(str);
+                Console.WriteLine(this);
+                HelpProvider.ShowHelp(str, Mw);
+            }
+        }
+
+        public void doThings(string param)
+        {
+            //btnOK.Background = new SolidColorBrush(Color.FromRgb(32, 64, 128));
+            Title = param;
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {   
 
@@ -49,6 +71,8 @@ namespace Serbia_Train.pages
             }
             else
             {
+                //DialogHost.Show("Wrong Credentials!");
+                MessageBox.Show("Wrong credentials!");
                 return;
             }
 

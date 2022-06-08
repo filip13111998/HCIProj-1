@@ -6,8 +6,9 @@
       xmlns:local="clr-namespace:Serbia_Train.pages"
       mc:Ignorable="d" 
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-     xmlns:gmaps="clr-namespace:GMap.NET.WindowsPresentation;assembly=GMap.NET.WindowsPresentation"
-        
+      xmlns:gmaps="clr-namespace:GMap.NET.WindowsPresentation;assembly=GMap.NET.WindowsPresentation"
+      xmlns:l="clr-namespace:Serbia_Train"
+      l:HelpProvider.HelpKey="LineMap"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="MapPage">
 
@@ -69,7 +70,9 @@
                      materialDesign:TextFieldAssist.UnderlineBrush="#a8d0e6"  
                      Opacity="0.7" 
                      HorizontalContentAlignment="Center" 
+                     ToolTip="Enter Station Name"
                      Text="Enter Name" x:Name="Station_Name_Filed" 
+                     l:HelpProvider.HelpKey="LineMap"
                      Height="40" FontSize="20" >
                 
             </TextBox>
@@ -78,7 +81,9 @@
                      materialDesign:TextFieldAssist.UnderlineBrush="#a8d0e6"  
                      Opacity="0.7" 
                      HorizontalContentAlignment="Center" 
+                     ToolTip="Enter Longitude Coordinate of Station"
                      Text="Enter Longitude" x:Name="Longitude_Name_Filed" 
+                     l:HelpProvider.HelpKey="LineMap"
                      Height="40" FontSize="20" >
 
             </TextBox>
@@ -87,7 +92,9 @@
                      materialDesign:TextFieldAssist.UnderlineBrush="#a8d0e6"  
                      Opacity="0.7" 
                      HorizontalContentAlignment="Center" 
-                     Text="Enter Latitude" x:Name="Latitude_Name_Filed" 
+                     ToolTip="Enter Latitude Coordinate of Station"
+                     Text="Enter Latitude" x:Name="Latitude_Name_Filed"
+                     l:HelpProvider.HelpKey="LineMap"
                      Height="40" FontSize="20" >
 
             </TextBox>
@@ -99,8 +106,10 @@
                      Background="#a8d0e6" 
                      Click="Add_Station" 
                      Margin="500 0 500 0"
-                     
-                     Content="Sign In">
+                     Foreground="White"
+                     ToolTip="Add new Station to Line"
+                     l:HelpProvider.HelpKey="LineMap"
+                     Content="Add Station">
                 
             </Button>
 
@@ -181,7 +190,7 @@
                     <DataGrid.Columns>
 
 
-                        <DataGridTemplateColumn Width="0.5*"  Header="Stations List">
+                        <DataGridTemplateColumn Width="0.6*"  Header="Stations List">
 
                             <DataGridTemplateColumn.CellTemplate>
 

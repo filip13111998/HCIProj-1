@@ -36,8 +36,12 @@ C:\Users\vaske\Desktop\HCI-PROJEKAT-2\Serbia-Train\Serbia-Train\obj\Debug\pages\
 C:\Users\vaske\Desktop\HCI-PROJEKAT-2\Serbia-Train\Serbia-Train\obj\Debug\pages\TrainPage.baml
 C:\Users\vaske\Desktop\HCI-PROJEKAT-2\Serbia-Train\Serbia-Train\obj\Debug\pages\TicketPage.g.cs
 C:\Users\vaske\Desktop\HCI-PROJEKAT-2\Serbia-Train\Serbia-Train\obj\Debug\pages\TicketPage.baml
-C:\Users\vaske\Desktop\HCI-PROJEKAT-2\Serbia-Train\Serbia-Train\obj\Debug\Serbia-Train.csproj.AssemblyReference.cache
 C:\Users\vaske\Desktop\HCI-PROJEKAT-2\Serbia-Train\Serbia-Train\obj\Debug\pages\MapPage.g.cs
 C:\Users\vaske\Desktop\HCI-PROJEKAT-2\Serbia-Train\Serbia-Train\obj\Debug\pages\Trafic.g.cs
 C:\Users\vaske\Desktop\HCI-PROJEKAT-2\Serbia-Train\Serbia-Train\obj\Debug\pages\MapPage.baml
 C:\Users\vaske\Desktop\HCI-PROJEKAT-2\Serbia-Train\Serbia-Train\obj\Debug\pages\Trafic.baml
+C:\Users\vaske\Desktop\HCI-PROJEKAT-2\Serbia-Train\Serbia-Train\obj\Debug\HelpViewer.g.cs
+C:\Users\vaske\Desktop\HCI-PROJEKAT-2\Serbia-Train\Serbia-Train\obj\Debug\HelpViewer.baml
+C:\Users\vaske\Desktop\HCI-PROJEKAT-2\Serbia-Train\Serbia-Train\obj\Debug\Serbia-Train_Content.g.cs
+C:\Users\vaske\Desktop\HCI-PROJEKAT-2\Serbia-Train\Serbia-Train\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\vaske\Desktop\HCI-PROJEKAT-2\Serbia-Train\Serbia-Train\obj\Debug\Serbia-Train.csproj.AssemblyReference.cache

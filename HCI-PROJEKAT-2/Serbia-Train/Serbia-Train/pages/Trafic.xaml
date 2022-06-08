@@ -5,6 +5,9 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Serbia_Train.pages"
       mc:Ignorable="d" 
+      xmlns:l="clr-namespace:Serbia_Train"
+      l:HelpProvider.HelpKey="LineTraffic"
+      
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Trafic">
 

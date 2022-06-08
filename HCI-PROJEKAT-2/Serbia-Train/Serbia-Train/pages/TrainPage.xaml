@@ -6,7 +6,8 @@
       xmlns:local="clr-namespace:Serbia_Train.pages"
       mc:Ignorable="d"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-     
+      xmlns:l="clr-namespace:Serbia_Train"
+      l:HelpProvider.HelpKey="Train"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="TrainPage">
 
@@ -37,7 +38,7 @@
                             <RowDefinition Height="*"></RowDefinition>
                         </Grid.RowDefinitions>
                         <StackPanel Background="#a8d0e6" Grid.Row="0" Height="70" Orientation="Horizontal">
-                            <TextBox Margin="10 0 0 0" Width="130" 
+                            <TextBox Margin="10 0 0 0" Width="130" Focusable="True"
                                      materialDesign:TextFieldAssist.UnderlineBrush="#a8d0e6"  
                                      Opacity="0.7" HorizontalContentAlignment="Center" 
                                      Text="Add Train" x:Name="Add_Train_Filed" 
@@ -159,7 +160,7 @@
                    
                 </Grid>
 
-                <Grid Grid.Column="1">
+                <Grid Grid.Column="1" x:Name="Train_Visibility" Visibility="Hidden">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="1*"></RowDefinition>
@@ -201,15 +202,15 @@
                             <!--<TextBlock FontSize="32" Margin="600 20 0 0" x:Name="Train_Name" ></TextBlock>-->
                         </StackPanel>
 
-                        <ScrollViewer Grid.Row="3" HorizontalAlignment="Left" HorizontalContentAlignment="Center" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-                            <StackPanel Margin="400 0 0 0" Grid.Row="3" Orientation="Horizontal" x:Name="Train_Composition">
+                        <ScrollViewer Margin="400 0 0 0" Width="500" Grid.Row="3" HorizontalAlignment="Left" HorizontalContentAlignment="Center" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                            <StackPanel Grid.Row="3" Orientation="Horizontal" x:Name="Train_Composition">
 
                             </StackPanel>
                         </ScrollViewer>
 
                         <Grid Grid.Row="4">
-                            <ComboBox x:Name="Combo" Margin="0 0 0 100" Width="150" Height="40">
-                                <ComboBoxItem IsSelected="True">
+                            <ComboBox l:HelpProvider.HelpKey="Train" ToolTip="Select Wagon Type" x:Name="Combo" Margin="0 0 0 100" Width="150" Height="40">
+                                <ComboBoxItem l:HelpProvider.HelpKey="Train" IsSelected="True">
                                     <StackPanel Orientation="Horizontal">
                                         <Image  Margin="20 0 0 0" Source="/assets/wagon1.png" Height="30"/>
                                         <TextBlock  Margin="20 10 0 0" Text="MALI"></TextBlock>
@@ -217,13 +218,13 @@
 
 
                                 </ComboBoxItem>
-                                <ComboBoxItem >
+                                <ComboBoxItem l:HelpProvider.HelpKey="Train" >
                                     <StackPanel Orientation="Horizontal">
                                         <Image  Margin="20 0 0 0" Source="/assets/wagon2.png" Height="30"/>
                                         <TextBlock   Margin="20 10 0 0" Text="SREDNJI"></TextBlock>
                                     </StackPanel>
                                 </ComboBoxItem>
-                                <ComboBoxItem>
+                                <ComboBoxItem l:HelpProvider.HelpKey="Train">
                                     <StackPanel Orientation="Horizontal">
                                         <Image  Margin="20 0 0 0" Source="/assets/wagon3.png" Height="30"/>
                                         <TextBlock  Margin="20 10 0 0" Text="VELIKI"></TextBlock>
@@ -231,9 +232,9 @@
                                 </ComboBoxItem>
                             </ComboBox>
 
-                            <TextBox Margin="0 80 0 50" Width="250" materialDesign:TextFieldAssist.UnderlineBrush="#a8d0e6"  Opacity="0.7" HorizontalContentAlignment="Center" Text="Enter Wagon Number" x:Name="Wagon_Order_Filed" Height="40" FontSize="20" ></TextBox>
+                            <TextBox l:HelpProvider.HelpKey="Train" ToolTip="Enter wagon number in train composition" Margin="0 80 0 50" Width="250" materialDesign:TextFieldAssist.UnderlineBrush="#a8d0e6"  Opacity="0.7" HorizontalContentAlignment="Center" Text="Enter Wagon Number" x:Name="Wagon_Order_Filed" Height="40" FontSize="20" ></TextBox>
 
-                            <Button x:Name="Add_Wagon" Width="250" BorderThickness="0 0 0 0"  Background="#a8d0e6" Click="Add_Wagon_Click" Margin="70 120 70 0" Content="Add Wagon"></Button>
+                            <Button  l:HelpProvider.HelpKey="Train" ToolTip="Add wagon in train composition" Foreground="White" x:Name="Add_Wagon" Width="250" BorderThickness="0 0 0 0"  Background="#a8d0e6" Click="Add_Wagon_Click" Margin="70 120 70 0" Content="Add Wagon"></Button>
 
 
                         </Grid>

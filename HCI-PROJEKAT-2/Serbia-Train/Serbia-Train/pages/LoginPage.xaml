@@ -6,10 +6,13 @@
       xmlns:local="clr-namespace:Serbia_Train.pages"
       mc:Ignorable="d" 
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-     
+      xmlns:l="clr-namespace:Serbia_Train"
+      l:HelpProvider.HelpKey="Login"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="LoginPage">
-
+    <Page.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed"/>
+    </Page.CommandBindings>
     <Grid>
 
        
@@ -48,12 +51,14 @@
             </Border>
         </Border>
 
-        <TextBox materialDesign:TextFieldAssist.UnderlineBrush="#a8d0e6"  Opacity="0.7" HorizontalContentAlignment="Center" Text="Enter Username" x:Name="Username_Filed" Height="40" FontSize="20" Margin="40 0 40 0" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"></TextBox>
+        
+
+        <TextBox ToolTip="Enter Your Username" l:HelpProvider.HelpKey="Login" materialDesign:TextFieldAssist.UnderlineBrush="#a8d0e6"  Opacity="0.7" HorizontalContentAlignment="Center" Text="Enter Username" x:Name="Username_Filed" Height="40" FontSize="20" Margin="40 0 40 0" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"></TextBox>
 
 
-        <PasswordBox materialDesign:TextFieldAssist.UnderlineBrush="#a8d0e6" Opacity="0.7" HorizontalContentAlignment="Center"  Password="Enter Password" x:Name="Password_Filed" Height="40" FontSize="20" Margin="40 0 40 0" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"></PasswordBox>
+        <PasswordBox l:HelpProvider.HelpKey="Login" ToolTip="Enter Your Password" materialDesign:TextFieldAssist.UnderlineBrush="#a8d0e6" Opacity="0.7" HorizontalContentAlignment="Center"  Password="Enter Password" x:Name="Password_Filed" Height="40" FontSize="20" Margin="40 0 40 0" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"></PasswordBox>
 
-        <Button  BorderThickness="0 0 0 0"  Background="#a8d0e6" Click="Button_Click" Margin="70 0 70 0" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Content="Sign In"></Button>
+        <Button l:HelpProvider.HelpKey="Login" ToolTip="Sing in on System" Foreground="White" BorderThickness="0 0 0 0"  Background="#a8d0e6" Click="Button_Click" Margin="70 0 70 0" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Content="Sign In"></Button>
         
     </Grid>
 </Page>

@@ -78,8 +78,25 @@ namespace Serbia_Train
             this._NavigationFrame.Navigate(new TrainPage(this));
         }
 
+        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            Console.WriteLine("USO");
+            IInputElement focusedControl = FocusManager.GetFocusedElement(Application.Current.Windows[0]);
+            if (focusedControl is DependencyObject)
+            {
+                string str = HelpProvider.GetHelpKey((DependencyObject)focusedControl);
+                Console.WriteLine(str);
+                Console.WriteLine(this);
+                HelpProvider.ShowHelp(str, this);
+            }
+        }
 
-       
+        public void doThings(string param)
+        {
+            //btnOK.Background = new SolidColorBrush(Color.FromRgb(32, 64, 128));
+            Title = param;
+        }
+
 
     }
 }

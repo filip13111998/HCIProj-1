@@ -76,6 +76,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="HelpViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -84,6 +88,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="HelpProvider.cs" />
+    <Compile Include="HelpViewer.xaml.cs">
+      <DependentUpon>HelpViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JavaScriptControlHelper.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -359,6 +368,18 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="assets\train8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Help\error.html" />
+    <Content Include="Help\Home.html" />
+    <Content Include="Help\Indeks.html" />
+    <Content Include="Help\LineMap.html" />
+    <Content Include="Help\LineTraffic.html" />
+    <Content Include="Help\Login.html" />
+    <Content Include="Help\style.css" />
+    <Content Include="Help\Ticket.html" />
+    <Content Include="Help\Timetable.html" />
+    <Content Include="Help\Train.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.6.6.2\build\Fody.targets" Condition="Exists('..\packages\Fody.6.6.2\build\Fody.targets')" />

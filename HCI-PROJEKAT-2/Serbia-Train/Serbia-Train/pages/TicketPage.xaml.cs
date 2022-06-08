@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MaterialDesignThemes.Wpf;
 using Serbia_Train.models;
 
 namespace Serbia_Train.pages
@@ -26,6 +27,18 @@ namespace Serbia_Train.pages
         public TicketPage(MainWindow mw)
         {
             InitializeComponent();
+
+            PaletteHelper paletteHelper = new PaletteHelper();
+
+            var theme = paletteHelper.GetTheme();
+
+            theme.SetPrimaryColor((Color)ColorConverter.ConvertFromString("#a8d0e6"));
+
+            //theme.SetSecondaryColor((Color)ColorConverter.ConvertFromString("#FFFFFF"));
+
+            paletteHelper.SetTheme(theme);
+
+
             this.Mw = mw;
             Set_DataContext();
 
@@ -46,6 +59,26 @@ namespace Serbia_Train.pages
 
         }
 
+
+        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            Console.WriteLine("USO");
+            IInputElement focusedControl = FocusManager.GetFocusedElement(Application.Current.Windows[0]);
+            if (focusedControl is DependencyObject)
+            {
+                string str = HelpProvider.GetHelpKey((DependencyObject)focusedControl);
+                Console.WriteLine(str);
+                Console.WriteLine(this);
+                HelpProvider.ShowHelp(str, Mw);
+            }
+        }
+
+        public void doThings(string param)
+        {
+            //btnOK.Background = new SolidColorBrush(Color.FromRgb(32, 64, 128));
+            Title = param;
+        }
+
         public void Set_DataContext()
         {
             this.DataContext = Ticket.Tickets;
@@ -62,7 +95,7 @@ namespace Serbia_Train.pages
             if (this.Start_Date_Filed.Text != "" && this.Start_Date_Filed.Text != "Start Date")
             {
                 d1_arr = this.Start_Date_Filed.Text.Split('/');
-                d1 = new DateTime(Int32.Parse(d1_arr[2]), Int32.Parse(d1_arr[1]), Int32.Parse(d1_arr[0]), 0, 0, 0);
+                d1 = new DateTime(Int32.Parse(d1_arr[2]), Int32.Parse(d1_arr[0]), Int32.Parse(d1_arr[1]), 0, 0, 0);
                 All_Filter_Tcikets = this.Start_Date_Filter(Ticket.Tickets , d1);
             }
 
@@ -72,7 +105,7 @@ namespace Serbia_Train.pages
             if (this.End_Date_Filed.Text != "" && this.End_Date_Filed.Text != "End Date")
             {
                 d2_arr = this.End_Date_Filed.Text.Split('/');
-                d2 = new DateTime(Int32.Parse(d2_arr[2]), Int32.Parse(d2_arr[1]), Int32.Parse(d2_arr[0]), 0, 0, 0);
+                d2 = new DateTime(Int32.Parse(d2_arr[2]), Int32.Parse(d2_arr[0]), Int32.Parse(d2_arr[1]), 0, 0, 0);
                 All_Filter_Tcikets = this.End_Date_Filter(All_Filter_Tcikets, d2);
             }
 

@@ -6,7 +6,8 @@
       xmlns:local="clr-namespace:Serbia_Train.pages"
       mc:Ignorable="d" 
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-     
+      xmlns:l="clr-namespace:Serbia_Train"
+      l:HelpProvider.HelpKey="Timetable"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="TimePage">
 
@@ -119,7 +120,7 @@
 
                                         <StackPanel  Orientation="Horizontal">
                                             <Image Source="/assets/train2.png" Height="30"/>
-                                            <TextBlock Margin="20 0 0 0" Text="{Binding Name}"></TextBlock>
+                                            <TextBlock Foreground="White" Margin="20 0 0 0" Text="{Binding Name}"></TextBlock>
                                         </StackPanel>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
@@ -171,21 +172,34 @@
                             
                             
                             <StackPanel Orientation="Horizontal" Margin="0 0 0 50">
-                                <TextBox  Margin="350 0 0 0"  Width="250" materialDesign:TextFieldAssist.UnderlineBrush="#a8d0e6"  Opacity="0.7" HorizontalContentAlignment="Center" Text="Start Time" x:Name="Start_Filed" Height="40" FontSize="20" ></TextBox>
-                                <TextBox Margin="50 0 0 0" Width="250" materialDesign:TextFieldAssist.UnderlineBrush="#a8d0e6"  Opacity="0.7" HorizontalContentAlignment="Center" Text="End Time" x:Name="End_Filed" Height="40" FontSize="20" ></TextBox>
+                                <!--<TextBox  Margin="350 0 0 0"  
+                                          Width="250" 
+                                          materialDesign:TextFieldAssist.UnderlineBrush="#a8d0e6"  
+                                          Opacity="0.7" 
+                                          HorizontalContentAlignment="Center" 
+                                          Text="Start Time" 
+                                          x:Name="Start_Filed" 
+                                          Height="40" 
+                                          FontSize="20" >
+                                    
+                                </TextBox>-->
+
+                                <materialDesign:TimePicker l:HelpProvider.HelpKey="Timetable" ToolTip="Select Start Time" Margin="350 0 0 0" x:Name="Start_Filed" Opacity="0.7" HorizontalContentAlignment="Center" Height="40" FontSize="20" Text="Start Time"  Width="250"></materialDesign:TimePicker>
+
+                                <materialDesign:TimePicker l:HelpProvider.HelpKey="Timetable" ToolTip="Select End Time" Margin="50 0 0 0" Width="250" materialDesign:TextFieldAssist.UnderlineBrush="#a8d0e6"  Opacity="0.7" HorizontalContentAlignment="Center" Text="End Time" x:Name="End_Filed" Height="40" FontSize="20" ></materialDesign:TimePicker>
 
 
                             </StackPanel>
 
                             <StackPanel Orientation="Horizontal"  Margin="0 0 0 50">
-                                <TextBox Margin="350 0 0 0" Width="250" materialDesign:TextFieldAssist.UnderlineBrush="#a8d0e6"  Opacity="0.7" HorizontalContentAlignment="Center" Text="Comeback Start Time" x:Name="Comeback_Start_Filed" Height="40" FontSize="20" ></TextBox>
-                                <TextBox Margin="50 0 0 0" Width="250" materialDesign:TextFieldAssist.UnderlineBrush="#a8d0e6"  Opacity="0.7" HorizontalContentAlignment="Center" Text="Comeback End Time" x:Name="Comeback_End_Filed" Height="40" FontSize="20" ></TextBox>
+                                <materialDesign:TimePicker l:HelpProvider.HelpKey="Timetable" ToolTip="Select Comeback Start Time"  Margin="350 0 0 0" Width="250" materialDesign:TextFieldAssist.UnderlineBrush="#a8d0e6"  Opacity="0.7" HorizontalContentAlignment="Center" Text="Comeback Start Time" x:Name="Comeback_Start_Filed" Height="40" FontSize="20" ></materialDesign:TimePicker>
+                                <materialDesign:TimePicker ToolTip="Select Comeback End Time"  Margin="50 0 0 0" Width="250" materialDesign:TextFieldAssist.UnderlineBrush="#a8d0e6"  Opacity="0.7" HorizontalContentAlignment="Center" Text="Comeback End Time" x:Name="Comeback_End_Filed" Height="40" FontSize="20" ></materialDesign:TimePicker>
 
                             </StackPanel>
 
-                            <ComboBox x:Name="Combo"  Width="250"></ComboBox>
-                            
-                            <Button  Margin="0 50 0 0" x:Name="Add_Timetable" Width="250" BorderThickness="0 0 0 0"  Background="#a8d0e6" Click="Add_Timetable_Click" Content="Add Timetable"></Button>
+                            <ComboBox l:HelpProvider.HelpKey="Timetable" ToolTip="Select Timetable Type Time" x:Name="Combo"  Width="250"></ComboBox>
+
+                            <Button l:HelpProvider.HelpKey="Timetable" ToolTip="Add New Timetable" Foreground="White" Margin="0 50 0 0" x:Name="Add_Timetable" Width="250" BorderThickness="0 0 0 0"  Background="#a8d0e6" Click="Add_Timetable_Click" Content="Add Timetable"></Button>
 
                         </StackPanel>
 

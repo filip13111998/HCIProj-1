@@ -6,7 +6,8 @@
       xmlns:local="clr-namespace:Serbia_Train.pages"
       mc:Ignorable="d" 
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-     
+      xmlns:l="clr-namespace:Serbia_Train"
+      l:HelpProvider.HelpKey="Home"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="HomePageMenager">
 
@@ -60,7 +61,7 @@
                         </Border>
                         </Border>
 
-                        <TextBox IsReadOnly="True" Grid.Column="1" Margin="0 0 0 40" Width="170" materialDesign:TextFieldAssist.UnderlineBrush="#a8d0e6"  Opacity="0.7" HorizontalContentAlignment="Center" Text="{Binding UserName}" x:Name="Username_Filed" Height="40" FontSize="20" ></TextBox>
+                        <TextBox l:HelpProvider.HelpKey="Home" IsReadOnly="True" Grid.Column="1" Margin="0 0 0 40" Width="170" materialDesign:TextFieldAssist.UnderlineBrush="#a8d0e6"  Opacity="0.7" HorizontalContentAlignment="Center" Text="{Binding UserName}" x:Name="Username_Filed" Height="40" FontSize="20" ></TextBox>
 
                     </StackPanel>
                     
@@ -81,7 +82,7 @@
                             </Border>
                         </Border>
 
-                        <TextBox  Grid.Column="1" Margin="0 120 0 0" Width="170" materialDesign:TextFieldAssist.UnderlineBrush="#a8d0e6"  Opacity="0.7" HorizontalContentAlignment="Center" Text="{Binding Password}" x:Name="Password_Filed" Height="40" FontSize="20" ></TextBox>
+                        <TextBox l:HelpProvider.HelpKey="Home" ToolTip="Change Password"  Grid.Column="1" Margin="0 120 0 0" Width="170" materialDesign:TextFieldAssist.UnderlineBrush="#a8d0e6"  Opacity="0.7" HorizontalContentAlignment="Center" Text="{Binding Password}" x:Name="Password_Filed" Height="40" FontSize="20" ></TextBox>
 
                     </StackPanel>
 
@@ -104,7 +105,7 @@
                             </Border>
                         </Border>
 
-                        <TextBox  Grid.Column="2" Margin="0 0 0 40" Width="170" materialDesign:TextFieldAssist.UnderlineBrush="#a8d0e6"  Opacity="0.7" HorizontalContentAlignment="Center" Text="{Binding FirstName}" x:Name="FirstName_Filed" Height="40" FontSize="20" ></TextBox>
+                        <TextBox l:HelpProvider.HelpKey="Home" ToolTip="Change First Name"  Grid.Column="2" Margin="0 0 0 40" Width="170" materialDesign:TextFieldAssist.UnderlineBrush="#a8d0e6"  Opacity="0.7" HorizontalContentAlignment="Center" Text="{Binding FirstName}" x:Name="FirstName_Filed" Height="40" FontSize="20" ></TextBox>
 
                     </StackPanel>
                     <!--<TextBlock  Margin="0 0 90 40" Height="40" FontSize="20"  Grid.Column="2" Text="First Name:"></TextBlock>-->
@@ -126,7 +127,7 @@
                             </Border>
                         </Border>
 
-                        <TextBox Grid.Column="2" Margin="0 120 0 0" Width="170" materialDesign:TextFieldAssist.UnderlineBrush="#a8d0e6"  Opacity="0.7" HorizontalContentAlignment="Center" Text="{Binding LastName}" x:Name="LastName_Filed" Height="40" FontSize="20" ></TextBox>
+                        <TextBox l:HelpProvider.HelpKey="Home" ToolTip="Change Last Name" Grid.Column="2" Margin="0 120 0 0" Width="170" materialDesign:TextFieldAssist.UnderlineBrush="#a8d0e6"  Opacity="0.7" HorizontalContentAlignment="Center" Text="{Binding LastName}" x:Name="LastName_Filed" Height="40" FontSize="20" ></TextBox>
 
                     </StackPanel>
 

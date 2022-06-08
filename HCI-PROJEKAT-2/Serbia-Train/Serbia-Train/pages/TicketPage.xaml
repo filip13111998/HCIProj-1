@@ -6,7 +6,8 @@
       xmlns:local="clr-namespace:Serbia_Train.pages"
       mc:Ignorable="d" 
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-     
+      xmlns:l="clr-namespace:Serbia_Train"
+      l:HelpProvider.HelpKey="Ticket"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Ticket">
 
@@ -61,35 +62,42 @@
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
 
+                
+                
                 <TextBox Opacity="0.7" HorizontalContentAlignment="Center"
                          materialDesign:TextFieldAssist.UnderlineBrush="#a8d0e6"
                          Width="200" Grid.Row="0" Grid.Column="1" 
                          Text="Train Name" ToolTip="Enter Name of Train" 
-                         
+                         l:HelpProvider.HelpKey="Ticket"
                          x:Name="Name_Filed" Height="40" FontSize="20">
                     
                 </TextBox>
 
-                <TextBox Opacity="0.7" HorizontalContentAlignment="Center"
+                <DatePicker Opacity="0.7" HorizontalContentAlignment="Center"
                          materialDesign:TextFieldAssist.UnderlineBrush="#a8d0e6"
                          Width="200" Margin="10 0 10 0" Grid.Row="0" 
                          Grid.Column="2" Text="Start Date" 
-                         ToolTip="Start Date in Format: Day/Month/Year. &#x0a; Example: 23/11/2022 or 04/07/2021"
+                         ToolTip="Enter Start Date"
+                            l:HelpProvider.HelpKey="Ticket"
                          x:Name="Start_Date_Filed" Height="40" FontSize="20">
                     
-                </TextBox>
+                </DatePicker>
 
-                <TextBox Opacity="0.7" HorizontalContentAlignment="Center"
+                <DatePicker  Opacity="0.7" HorizontalContentAlignment="Center"
                          materialDesign:TextFieldAssist.UnderlineBrush="#a8d0e6"
                          Width="200" Grid.Row="0" Grid.Column="3" 
                          Text="End Date"
+                         l:HelpProvider.HelpKey="Ticket"
+                         ToolTip="Enter End Date"
                          x:Name="End_Date_Filed" Height="40" FontSize="20">
                     
-                </TextBox>
+                </DatePicker>
 
                 <Button Margin="0 0 0 30"  Grid.Row="1" 
                         Grid.Column="2" Content="Search"
-                        BorderThickness="0 0 0 0"  
+                        BorderThickness="0 0 0 0" 
+                        Foreground="White"
+                        l:HelpProvider.HelpKey="Ticket"
                         Background="#a8d0e6" Click="Search_Click">
                     
                 </Button>

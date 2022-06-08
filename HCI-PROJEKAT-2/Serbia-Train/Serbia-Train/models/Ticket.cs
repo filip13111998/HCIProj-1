@@ -56,7 +56,7 @@ namespace Serbia_Train.models
             {
                 Id = "TTT",
                 TrainName = "Galeb",
-                Start = new DateTime(2022, 5, 6, 14, 00, 00),
+                Start = new DateTime(2022, 7, 6, 14, 00, 00),
                 End = new DateTime(2022, 7, 6, 19, 00, 00),
                 Relation = "NS-NIS"
             };
@@ -65,7 +65,7 @@ namespace Serbia_Train.models
             {
                 Id = "YQQ",
                 TrainName = "Galeb",
-                Start = new DateTime(2022, 5, 6, 14, 00, 00),
+                Start = new DateTime(2022, 7, 6, 14, 00, 00),
                 End = new DateTime(2022, 7, 6, 19, 00, 00),
                 Relation = "NS-NIS"
             };

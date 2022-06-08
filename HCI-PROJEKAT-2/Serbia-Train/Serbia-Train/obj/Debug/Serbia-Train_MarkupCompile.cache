@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\vaske\Desktop\HCI-PROJEKAT-2\Serbia-Train\Serbia-Train\App.xaml
-10889124575
-
-24778718525
+11-1248527028
+10-1377489640
+27-804855045
 181169962716
-MainWindow.xaml;pages\HomePageMenager.xaml;pages\LinePage.xaml;pages\LoginPage.xaml;pages\MapPage.xaml;pages\MenuPage.xaml;pages\TicketPage.xaml;pages\TimePage.xaml;pages\Trafic.xaml;pages\TrainPage.xaml;
+HelpViewer.xaml;MainWindow.xaml;pages\HomePageMenager.xaml;pages\LinePage.xaml;pages\LoginPage.xaml;pages\MapPage.xaml;pages\MenuPage.xaml;pages\TicketPage.xaml;pages\TimePage.xaml;pages\Trafic.xaml;pages\TrainPage.xaml;
 
 False
 

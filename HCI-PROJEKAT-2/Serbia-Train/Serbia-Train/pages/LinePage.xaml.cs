@@ -39,19 +39,38 @@ namespace Serbia_Train.pages
 
         }
 
+        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            Console.WriteLine("USO");
+            IInputElement focusedControl = FocusManager.GetFocusedElement(Application.Current.Windows[0]);
+            if (focusedControl is DependencyObject)
+            {
+                string str = HelpProvider.GetHelpKey((DependencyObject)focusedControl);
+                Console.WriteLine(str);
+                Console.WriteLine(this);
+                HelpProvider.ShowHelp(str, Mw);
+            }
+        }
+
+        public void doThings(string param)
+        {
+            //btnOK.Background = new SolidColorBrush(Color.FromRgb(32, 64, 128));
+            Title = param;
+        }
+
         public void Set_Map()
         {
-            this._LineNavigationBarFrame.Navigate(new MapPage());
+            this._LineNavigationBarFrame.Navigate(new MapPage(Mw));
         }
 
         public void Set_Map_Page(object sender , RoutedEventArgs e)
         {
-            this._LineNavigationBarFrame.Navigate(new MapPage());
+            this._LineNavigationBarFrame.Navigate(new MapPage(Mw));
         }
 
         public void Set_Traffic_Page(object sender, RoutedEventArgs e)
         {
-            this._LineNavigationBarFrame.Navigate(new Trafic());
+            this._LineNavigationBarFrame.Navigate(new Trafic(Mw));
         }
 
 

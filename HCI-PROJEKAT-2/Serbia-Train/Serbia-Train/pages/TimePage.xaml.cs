@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MaterialDesignThemes.Wpf;
 using Serbia_Train.models;
 
 namespace Serbia_Train.pages
@@ -30,6 +31,15 @@ namespace Serbia_Train.pages
         public TimePage(MainWindow mw)
         {
             InitializeComponent();
+
+            PaletteHelper paletteHelper = new PaletteHelper();
+
+            var theme = paletteHelper.GetTheme();
+
+            theme.SetPrimaryColor((Color)ColorConverter.ConvertFromString("#a8d0e6"));
+
+            paletteHelper.SetTheme(theme);
+
             this.Mw = mw;
 
             this.Trains_Left_Menu.DataContext = Train.Trains;
@@ -57,6 +67,24 @@ namespace Serbia_Train.pages
         }
 
 
+        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            Console.WriteLine("USO");
+            IInputElement focusedControl = FocusManager.GetFocusedElement(Application.Current.Windows[0]);
+            if (focusedControl is DependencyObject)
+            {
+                string str = HelpProvider.GetHelpKey((DependencyObject)focusedControl);
+                Console.WriteLine(str);
+                Console.WriteLine(this);
+                HelpProvider.ShowHelp(str, Mw);
+            }
+        }
+
+        public void doThings(string param)
+        {
+            //btnOK.Background = new SolidColorBrush(Color.FromRgb(32, 64, 128));
+            Title = param;
+        }
         private void OnAutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
             PropertyDescriptor propertyDescriptor = (PropertyDescriptor)e.PropertyDescriptor;
@@ -151,16 +179,41 @@ namespace Serbia_Train.pages
             Timetable t = new Timetable();
 
             String Start_Time = this.Start_Filed.Text;
-            t.Start = new TimeSpan(Int32.Parse(Start_Time.Split(':')[0]), Int32.Parse(Start_Time.Split(':')[1]), 0);
+            Console.WriteLine(Start_Time + " VREME");
+
+            if (Start_Time == "" || Start_Time == "Start Time" )
+            {
+                return;
+            }
+
+            t.Start = new TimeSpan(Int32.Parse(Start_Time.Split(':')[0]), Int32.Parse(Start_Time.Split(':')[1].Split(' ')[0]), 0);
 
             String End_Time = this.End_Filed.Text;
-            t.End = new TimeSpan(Int32.Parse(End_Time.Split(':')[0]), Int32.Parse(End_Time.Split(':')[1]), 0);
+
+            if (End_Time == "" || End_Time == "End Time")
+            {
+                return;
+            }
+
+            t.End = new TimeSpan(Int32.Parse(End_Time.Split(':')[0]), Int32.Parse(Start_Time.Split(':')[1].Split(' ')[0]), 0);
 
             String Come_Start_Time = this.Comeback_Start_Filed.Text;
-            t.ComebackStart = new TimeSpan(Int32.Parse(Come_Start_Time.Split(':')[0]), Int32.Parse(Come_Start_Time.Split(':')[1]), 0);
+
+            if (Come_Start_Time == "" || Come_Start_Time == "Comeback Start Time")
+            {
+                return;
+            }
+
+            t.ComebackStart = new TimeSpan(Int32.Parse(Come_Start_Time.Split(':')[0]), Int32.Parse(Start_Time.Split(':')[1].Split(' ')[0]), 0);
 
             String Come_End_Time = this.Comeback_End_Filed.Text;
-            t.ComebackEnd = new TimeSpan(Int32.Parse(Come_End_Time.Split(':')[0]), Int32.Parse(Come_End_Time.Split(':')[1]), 0);
+
+            if (Come_End_Time == "" || Come_End_Time == "Comeback End Time")
+            {
+                return;
+            }
+
+            t.ComebackEnd = new TimeSpan(Int32.Parse(Come_End_Time.Split(':')[0]), Int32.Parse(Start_Time.Split(':')[1].Split(' ')[0]), 0);
 
             String typeItem = this.Combo.SelectedItem.ToString();
             //string value = typeItem.Content.ToString();

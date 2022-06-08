@@ -20,16 +20,37 @@ namespace Serbia_Train.pages
     /// </summary>
     public partial class Trafic : Page
     {
-
+        public MainWindow Mw { get; set; }
         public static String Line_Name { get; set; }
         public static Line My_Line { get; set; }
 
-        public Trafic()
+        public Trafic(MainWindow mw)
         {
             InitializeComponent();
 
             Find_Line();
 
+            this.Mw = mw;
+
+        }
+
+        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            Console.WriteLine("USO");
+            IInputElement focusedControl = FocusManager.GetFocusedElement(Application.Current.Windows[0]);
+            if (focusedControl is DependencyObject)
+            {
+                string str = HelpProvider.GetHelpKey((DependencyObject)focusedControl);
+                Console.WriteLine(str);
+                Console.WriteLine(this);
+                HelpProvider.ShowHelp(str, Mw);
+            }
+        }
+
+        public void doThings(string param)
+        {
+            //btnOK.Background = new SolidColorBrush(Color.FromRgb(32, 64, 128));
+            Title = param;
         }
 
 

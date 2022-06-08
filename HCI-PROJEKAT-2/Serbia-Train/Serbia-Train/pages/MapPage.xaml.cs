@@ -25,15 +25,17 @@ namespace Serbia_Train.pages
     public partial class MapPage : Page
     {
 
-
+        public int Ltd_Lnd_Cnt = 0;
         public static String Line_Name { get; set; }
+
+        public MainWindow Mw { get; set; }
 
         public static Line My_Line { get; set; }
 
         public static List<PointLatLng> gpollist = new List<PointLatLng>();
 
         public static GMapPolygon gpol = new GMapPolygon(gpollist);
-        public MapPage()
+        public MapPage(MainWindow mw)
         {
             InitializeComponent();
 
@@ -48,7 +50,27 @@ namespace Serbia_Train.pages
             Latitude_Name_Filed.GotFocus += RemoveLatitude;
             Latitude_Name_Filed.LostFocus += AddLatitude;
 
+            this.Mw = mw;
+        }
 
+
+        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            Console.WriteLine("USO");
+            IInputElement focusedControl = FocusManager.GetFocusedElement(Application.Current.Windows[0]);
+            if (focusedControl is DependencyObject)
+            {
+                string str = HelpProvider.GetHelpKey((DependencyObject)focusedControl);
+                Console.WriteLine(str);
+                Console.WriteLine(this);
+                HelpProvider.ShowHelp(str, Mw);
+            }
+        }
+
+        public void doThings(string param)
+        {
+            //btnOK.Background = new SolidColorBrush(Color.FromRgb(32, 64, 128));
+            Title = param;
         }
 
         public void Find_Line()
@@ -66,16 +88,52 @@ namespace Serbia_Train.pages
         {
 
             Station s = new Station();
-            s.Name = this.Station_Name_Filed.Text;
-            s.Longitude = Double.Parse( this.Longitude_Name_Filed.Text);
-            s.Latitude = Double.Parse(this.Latitude_Name_Filed.Text);
+            s.Name = this.Station_Name_Filed.Text + Ltd_Lnd_Cnt;
+
+            if (this.Longitude_Name_Filed.Text =="" || this.Longitude_Name_Filed.Text == "Enter Longitude")
+
+            {
+                s.Longitude = 23+ Ltd_Lnd_Cnt;
+            }
+            else
+            {
+                try {
+                    s.Longitude = Double.Parse(this.Longitude_Name_Filed.Text);
+                }
+                catch
+                {
+                    MessageBox.Show("Wrong Longitude Parameter");
+                    return;
+                }
+            }
+
+            if (this.Latitude_Name_Filed.Text == "" || this.Latitude_Name_Filed.Text == "Enter Latitude")
+
+            {
+                s.Latitude = 23+ Ltd_Lnd_Cnt;
+            }
+            else
+            {
+                try
+                {
+                    s.Latitude = Double.Parse(this.Latitude_Name_Filed.Text);
+                }
+                catch
+                {
+                    MessageBox.Show("Wrong Latitude Parameter");
+                    return;
+                }
+               
+            }
+            //s.Longitude = Double.Parse( this.Longitude_Name_Filed.Text);
+            
 
             My_Line.ListaStanica.Add(s);
             Console.WriteLine(My_Line.ListaStanica.Count);
 
             MapView_Loaded(sender,e);
 
-
+            Ltd_Lnd_Cnt++;
         }
 
         public void Delete_Station(object sender, RoutedEventArgs e)
